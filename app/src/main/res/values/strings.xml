@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">InsightsPro</string>
+
+    <string name="facebook_app_id">369152678371559</string>
+    <string name="fb_login_protocol_scheme">fb369152678371559</string>
+    <string name="facebook_client_token">ab0feade6397f41d4a1c352bb3529724</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
