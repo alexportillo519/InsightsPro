@@ -18,3 +18,9 @@ data class IgAndFbPageId(
 data class InstagramData(
     @Json(name = "id")val instagramId: String
 )
+
+@JsonClass(generateAdapter = true)
+data class ProfilePicAndUsername(
+    @Json(name = "profile_picture_url")val profilePic: String,
+    @Json(name = "username")val username: String
+)

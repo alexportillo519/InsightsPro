@@ -3,7 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/drawable/button_selector.xml" value="0.1925" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/drawable/circular.xml" value="0.222" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/drawable/comment_background.xml" value="0.1925" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/drawable/dsafdasf.xml" value="0.167" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/drawable/image_background_border.xml" value="0.222" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/drawable/recycler_view_card_background.xml" value="0.1925" />
         <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/comment.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/fragment_all_comments.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/fragment_comment_details.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/replies.xml" value="0.6248037676609105" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/menu/home_menu.xml" value="0.1265625" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/menu/log_out_menu.xml" value="0.18802083333333333" />
       </map>
     </option>
   </component>

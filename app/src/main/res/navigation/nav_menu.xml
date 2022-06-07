@@ -7,16 +7,37 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.alexp.insightspro.LoginFragment"
-        android:label="fragment_login"
+        android:name="com.alexp.insightspro.fragments.LoginFragment"
+        android:label="Login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_allCommentsFragment"
-            app:destination="@id/allCommentsFragment" />
+            android:id="@+id/action_loginFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/allCommentsFragment"
-        android:name="com.alexp.insightspro.AllCommentsFragment"
-        android:label="fragment_all_comments"
-        tools:layout="@layout/fragment_all_comments" />
+        android:name="com.alexp.insightspro.fragments.AllCommentsFragment"
+        android:label="Comments"
+        tools:layout="@layout/fragment_all_comments" >
+        <action
+            android:id="@+id/action_allCommentsFragment_to_commentDetailsFragment"
+            app:destination="@id/commentDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentDetailsFragment"
+        android:name="com.alexp.insightspro.fragments.CommentDetailsFragment"
+        android:label="Comment Details"
+        tools:layout="@layout/fragment_comment_details" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.alexp.insightspro.fragments.HomeFragment"
+        android:label="InsightsPro"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_allCommentsFragment"
+            app:destination="@id/allCommentsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>
