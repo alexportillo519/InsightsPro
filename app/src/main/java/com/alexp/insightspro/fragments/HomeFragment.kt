@@ -28,23 +28,18 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         FacebookSdk.fullyInitialize()
-
+        mainViewModel.setAccessToken(accessToken?.token)
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
-        mainViewModel.setAccessToken(accessToken?.token)
-        mainViewModel.accessToken.observe(viewLifecycleOwner) { token ->
-            Network.getInstagramAccountId(token ?: "") { id ->
+        setOnClickListeners()
 
-                Network.getProfilePicture(id,token ?:"") { url, username ->
-                    mainViewModel.setProfilePictureUrl(url)
-                    mainViewModel.setUsername(username)
-                }
+        setObservers()
 
-            }
-        }
+        return binding.root
+    }
 
+    private fun setOnClickListeners() {
         binding.commentCardView.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_allCommentsFragment)
         }
@@ -62,15 +57,55 @@ class HomeFragment : Fragment() {
                 .create().show()
         }
 
-        mainViewModel.profilePictureUrl.observe(viewLifecycleOwner) { url ->
-            Glide.with(this).load(url).into(binding.profilePicIV)
+        binding.myProfileCardView.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_myProfileFragment)
         }
 
-        mainViewModel.username.observe(viewLifecycleOwner) { username ->
-            binding.usernameTv.text = username
+        binding.postsCardView.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_postsFragment)
         }
 
-        return binding.root
+        binding.flagsCardView.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_flaggedCommentsFragment)
+        }
+    }
+
+    private fun setObservers() {
+        mainViewModel.accessToken.observe(viewLifecycleOwner) { token ->
+            Network.getInstagramAccountId(token ?: "") { id ->
+
+                if (id == null) {
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("Connect Your Instagram Account")
+                        .setMessage("Make sure your instagram is either a business or a creator account. Then create a Facebook Page and connect that to your Instagram Account.")
+                        .setPositiveButton("Steps") { dialog, _ ->
+                            dialog.cancel()
+                            AlertDialog.Builder(requireContext())
+                                .setTitle("Connect Your Instagram Account")
+                                .setMessage("Step 1: Create a Facebook Page\n" +
+                                        "Sign in to Facebook -> Home -> Pages -> Create New Page\n" +
+                                        "Step 2: Connect your Facebook Page to your Instagram\n" +
+                                        "Go to your Facebook Page you just created -> Settings -> Instagram -> Connect Account\n" +
+                                        "You should be set!")
+                                .setPositiveButton("OK") { dialog2, _ ->
+                                    dialog2.cancel()
+                                }
+                                .create().show()
+                        }
+                        .setNegativeButton("Cancel") { dialog, _ ->
+                            dialog.cancel()
+                        }
+                        .create().show()
+                }
+
+                Network.getProfilePicture(id,token ?:"") { accountData ->
+                    Glide.with(this).load(accountData?.profilePic).into(binding.profilePicIV)
+                    binding.usernameTv.text = accountData?.username
+                }
+
+            }
+        }
+
     }
 
 }

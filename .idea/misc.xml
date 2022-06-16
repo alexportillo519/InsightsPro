@@ -13,9 +13,15 @@
         <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/comment.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/fragment_all_comments.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/fragment_comment_details.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/fragment_flagged_comment_detail.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/fragment_flagged_comments.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/fragment_home.xml" value="0.33" />
-        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/fragment_login.xml" value="0.25" />
-        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/replies.xml" value="0.6248037676609105" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/fragment_login.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/fragment_my_profile.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/fragment_posts.xml" value="0.225" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/my_profile_fragment.xml" value="0.17447916666666666" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/post.xml" value="0.5" />
+        <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/layout/replies.xml" value="0.5905044510385756" />
         <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/menu/home_menu.xml" value="0.1265625" />
         <entry key="..\:/AndroidStudioProjects/InsightsPro/app/src/main/res/menu/log_out_menu.xml" value="0.18802083333333333" />
       </map>

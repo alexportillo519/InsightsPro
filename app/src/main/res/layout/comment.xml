@@ -32,7 +32,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Kobelobe96" />
+                tools:text="Username0101" />
 
             <TextView
                 android:id="@+id/comment_text_TV"

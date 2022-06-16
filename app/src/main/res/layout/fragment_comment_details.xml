@@ -41,7 +41,7 @@
                 android:id="@+id/comment_text_TV"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textColor="@color/text_color_green"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
@@ -54,9 +54,9 @@
                 android:id="@+id/comment_time_posted_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textColor="@color/text_color_green"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/comment_text_TV"
                 tools:text="4d" />
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textColor="@color/text_color_green"
                 app:layout_constraintStart_toEndOf="@+id/comment_time_posted_TV"
                 app:layout_constraintTop_toTopOf="@+id/comment_time_posted_TV"
@@ -77,9 +77,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textColor="@color/text_color_green"
-                android:text="Reply"
+                android:text="@string/reply"
                 android:textStyle="bold"
                 android:clickable="true"
                 app:layout_constraintStart_toEndOf="@+id/comment_likes_TV"
@@ -93,7 +93,8 @@
                 android:src="@drawable/delete_icon"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                android:contentDescription="@string/delete_icon" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

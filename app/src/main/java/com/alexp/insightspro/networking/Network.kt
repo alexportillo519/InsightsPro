@@ -1,8 +1,9 @@
 package com.alexp.insightspro.networking
 
+import android.app.AlertDialog
 import android.util.Log
-import com.alexp.insightspro.models.Comment
-import com.alexp.insightspro.models.Reply
+import android.widget.Toast
+import com.alexp.insightspro.models.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -16,8 +17,9 @@ object Network {
     private var instagramId: String? = null
     private var listOfComments = mutableListOf<Comment>()
     private var listOfReplies = mutableListOf<Reply>()
-    private var profilePictureUrl: String? = null
-    private var username: String? = null
+    private var accountData: AccountData? = null
+    private var listOfPostData = mutableListOf<Post>()
+    private var accountInsights: AccountInsights? = null
     private var wasCommentDeleted: Boolean? = null
     private var wasReplyPosted: Boolean? = null
 
@@ -47,9 +49,9 @@ object Network {
         instagramGraphsAPI.getCommentDetails(instagramId, accessToken).enqueue(CommentsCallback(onSuccess))
     }
 
-    fun getProfilePicture(id: String?, accessToken: String?, onSuccess: (String?, String?) -> Unit) {
-        if(profilePictureUrl != null && username != null) {
-            onSuccess(profilePictureUrl, username)
+    fun getProfilePicture(id: String?, accessToken: String?, onSuccess: (AccountData?) -> Unit) {
+        if(accountData != null) {
+            onSuccess(accountData)
         }
         instagramGraphsAPI.getProfilePictureAndUsername(id, accessToken).enqueue(ProfilePictureCallback(onSuccess))
     }
@@ -59,6 +61,20 @@ object Network {
             onSuccess(listOfReplies)
         }
         instagramGraphsAPI.getReplies(replyId, accessToken).enqueue(ReplyCallback(onSuccess))
+    }
+
+    fun getAccountInsights(accountId: String?, accessToken: String?, onSuccess: (AccountInsights?) -> Unit) {
+        if(accountInsights != null) {
+            onSuccess(accountInsights)
+        }
+        instagramGraphsAPI.getProfileInsights(accountId, accessToken).enqueue(AccountInsightsCallback(onSuccess))
+    }
+
+    fun getPostData(accountId: String?, accessToken: String?, onSuccess: (List<Post?>) -> Unit) {
+        if (listOfPostData.isNotEmpty()) {
+            onSuccess(listOfPostData)
+        }
+        instagramGraphsAPI.getPostData(accountId, accessToken).enqueue(PostDataCallback(onSuccess))
     }
 
     fun deleteComment(id: String?, accessToken: String?, onSuccess: (Boolean?) -> Unit) {
@@ -72,10 +88,39 @@ object Network {
         instagramGraphsAPI.postReply(id, message, accessToken).enqueue(PostReplyCallback(onSuccess))
     }
 
+    private class PostDataCallback(private val onSuccess: (List<Post?>) -> Unit) : Callback<PostData> {
+        override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
+            listOfPostData = response.body()?.media?.toPostsDetails()!!
+            onSuccess(listOfPostData)
+        }
+
+        override fun onFailure(call: Call<PostData>, t: Throwable) {
+            Log.v("Networking", "Error! $t")
+        }
+
+    }
+
+    private class AccountInsightsCallback(private val onSuccess: (AccountInsights?) -> Unit) : Callback<InsightsData> {
+        override fun onResponse(call: Call<InsightsData>, response: Response<InsightsData>) {
+            val postViews = response.body()?.data?.get(0)?.listOfValues?.get(1)?.value
+            val profileVisits = response.body()?.data?.get(1)?.listOfValues?.get(1)?.value
+            val websiteClicked = response.body()?.data?.get(2)?.listOfValues?.get(1)?.value
+            val emailClicked = response.body()?.data?.get(3)?.listOfValues?.get(1)?.value
+            val phoneClicked = response.body()?.data?.get(4)?.listOfValues?.get(1)?.value
+            accountInsights = AccountInsights(postViews, profileVisits, websiteClicked, emailClicked, phoneClicked)
+
+            onSuccess(accountInsights)
+        }
+
+        override fun onFailure(call: Call<InsightsData>, t: Throwable) {
+            Log.v("Networking", "Error! $t")
+        }
+
+    }
+
     private class CommentsCallback(private val onSuccess: (List<Comment>) -> Unit) : Callback<CommentsDetails> {
         override fun onResponse(call: Call<CommentsDetails>, response: Response<CommentsDetails>) {
             listOfComments = response.body()?.toDetails()!!
-            Log.d("Network", "List of comments: $listOfComments")
             onSuccess(listOfComments.toList())
         }
 
@@ -97,18 +142,26 @@ object Network {
 
         override fun onFailure(call: Call<InstagramAccountId>, t: Throwable) {
             Log.e("Networking", "Error! $t")
+            onSuccess(null)
         }
 
     }
 
-    private class ProfilePictureCallback(private val onSuccess: (String?, String?) -> Unit) : Callback<ProfilePicAndUsername> {
+    private class ProfilePictureCallback(private val onSuccess: (AccountData?) -> Unit) : Callback<ProfilePicAndUsername> {
         override fun onResponse(
             call: Call<ProfilePicAndUsername>,
             response: Response<ProfilePicAndUsername>
         ) {
-            profilePictureUrl = response.body()?.profilePic
-            username = response.body()?.username
-            onSuccess(profilePictureUrl, username)
+            accountData = AccountData(
+                profilePic = response.body()?.profilePic,
+                followerCount = response.body()?.followerCount,
+                followingCount = response.body()?.followingCount,
+                name = response.body()?.name,
+                numOfPosts = response.body()?.numOfPosts,
+                bio = response.body()?.bio,
+                username = response.body()?.username
+            )
+            onSuccess(accountData)
         }
 
         override fun onFailure(call: Call<ProfilePicAndUsername>, t: Throwable) {
@@ -189,4 +242,24 @@ object Network {
         }
         return list
     }
+
+    private fun Media?.toPostsDetails(): MutableList<Post> {
+        val list = mutableListOf<Post>()
+        this?.listOfData?.forEach { postInfo ->
+            list.add(
+                Post(
+                postInfo.postUrl,
+                postInfo.caption,
+                postInfo.commentsCount,
+                postInfo.likeCount,
+                postInfo.postId
+            )
+            )
+        }
+        return list
+    }
 }
+
+
+
+

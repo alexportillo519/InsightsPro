@@ -21,11 +21,23 @@ interface InstagramGraphsAPI {
         @Query("access_token") accessToken: String?
     ) : Call<GetReplies>
 
-    @GET("{id}?fields=profile_picture_url,username")
+    @GET("{id}?fields=profile_picture_url,followers_count,follows_count,name,username,media_count,biography")
     fun getProfilePictureAndUsername(
         @Path("id") accountId: String?,
         @Query("access_token") accessToken: String?
     ): Call<ProfilePicAndUsername>
+
+    @GET("{id}/insights?metric=impressions,profile_views,website_clicks,email_contacts,phone_call_clicks&period=day")
+    fun getProfileInsights(
+        @Path("id")accountId: String?,
+        @Query("access_token") accessToken: String?
+    ): Call<InsightsData>
+
+    @GET("{id}?fields=media{media_url,caption,comments_count,like_count}")
+    fun getPostData(
+        @Path("id")accountId: String?,
+        @Query("access_token") accessToken: String?
+    ) : Call<PostData>
 
     @DELETE("{id}")
     fun deleteComment(
@@ -39,4 +51,5 @@ interface InstagramGraphsAPI {
         @Query("message") message: String?,
         @Query("access_token") accessToken: String?
     ) : Call<PostingReplyResult>
+
 }

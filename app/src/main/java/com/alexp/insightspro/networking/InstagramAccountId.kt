@@ -22,5 +22,10 @@ data class InstagramData(
 @JsonClass(generateAdapter = true)
 data class ProfilePicAndUsername(
     @Json(name = "profile_picture_url")val profilePic: String,
+    @Json(name = "followers_count")val followerCount: Int,
+    @Json(name = "follows_count")val followingCount: Int,
+    @Json(name = "name")val name: String,
+    @Json(name = "media_count")val numOfPosts: Int,
+    @Json(name = "biography")val bio: String,
     @Json(name = "username")val username: String
 )

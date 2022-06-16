@@ -39,5 +39,33 @@
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myProfileFragment"
+            app:destination="@id/myProfileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_postsFragment"
+            app:destination="@id/postsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_flaggedCommentsFragment"
+            app:destination="@id/flaggedCommentsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="com.alexp.insightspro.fragments.MyProfileFragment"
+        android:label="My Profile"
+        tools:layout="@layout/fragment_my_profile" />
+    <fragment
+        android:id="@+id/postsFragment"
+        android:name="com.alexp.insightspro.fragments.PostsFragment"
+        android:label="My Posts"
+        tools:layout="@layout/fragment_posts" />
+    <fragment
+        android:id="@+id/flaggedCommentsFragment"
+        android:name="com.alexp.insightspro.fragments.FlaggedCommentsFragment"
+        android:label="Flagged Comments"
+        tools:layout="@layout/fragment_flagged_comments" >
+        <action
+            android:id="@+id/action_flaggedCommentsFragment_to_commentDetailsFragment"
+            app:destination="@id/commentDetailsFragment" />
     </fragment>
 </navigation>

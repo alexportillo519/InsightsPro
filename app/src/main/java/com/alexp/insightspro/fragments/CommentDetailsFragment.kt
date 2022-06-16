@@ -120,7 +120,7 @@ class CommentDetailsFragment : Fragment() {
             .setView(container)
             .setPositiveButton("Post") { _, _ ->
                 binding.circularProgressBar.visibility = View.VISIBLE
-                var inputText = input.text.toString()
+                val inputText = input.text.toString()
                 Network.postReply(commentId, accessToken?.token, inputText){ replyWasPosted ->
                     if (replyWasPosted == true) {
                         Network.getReplies(commentId, accessToken?.token) { replies ->

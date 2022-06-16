@@ -7,5 +7,34 @@
     <string name="like_count">%1$d likes</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="reply">Reply</string>
+    <string name="delete_icon">Delete icon</string>
+    <string name="leaf_background_image">Leaf background image</string>
+    <string name="comments">Comments</string>
+    <string name="post_icon">Post Icon</string>
+    <string name="posts">Posts</string>
+    <string name="flags_icon">Flags Icon</string>
+    <string name="flags">Flags</string>
+    <string name="my_profile_icon">My Profile Icon</string>
+    <string name="my_profile">My Profile</string>
+    <string name="logout_icon">Logout Icon</string>
+    <string name="logout">Logout</string>
+    <string name="posts_caps">POSTS</string>
+    <string name="followers">FOLLOWERS</string>
+    <string name="following">FOLLOWING</string>
+    <string name="profile_visits_ntoday">Profile Visits\nToday</string>
+    <string name="_8">8</string>
+    <string name="post_views_ntoday">Post Views\nToday</string>
+    <string name="_20">20</string>
+    <string name="number_of_phone_nnumber_clicks">Number of Phone\nNumber Clicks</string>
+    <string name="_2">2</string>
+    <string name="number_of_email_nlink_clicks">Number of Email\nLink Clicks</string>
+    <string name="number_of_website_nlink_clicks">Number of Website\nLink Clicks</string>
+    <string name="_5">5</string>
+    <string name="image_of_post">Image of post.</string>
+    <string name="heart_icon">Heart Icon</string>
+    <string name="comment_icon">Comment Icon</string>
+    <string name="trash_icon">Trash Icon</string>
+    <string name="_0">0</string>
 
 </resources>

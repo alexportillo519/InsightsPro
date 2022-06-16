@@ -17,7 +17,6 @@ import com.alexp.insightspro.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    // Development Key Hash: VzSiQcXRmi2kyjzcA+mYLEtbGVs=
 
     private lateinit var binding: ActivityMainBinding
 

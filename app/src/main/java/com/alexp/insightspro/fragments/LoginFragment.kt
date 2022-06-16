@@ -24,7 +24,7 @@ class LoginFragment : Fragment() {
     private val callbackManager: CallbackManager = CallbackManager.Factory.create()
     private var accessToken: AccessToken? = null
     private var accessTokenTracker: AccessTokenTracker? = null
-    private val permissions = listOf("email", "public_profile", "pages_show_list", "ads_management", "business_management", "instagram_basic",  "instagram_manage_comments", "pages_read_engagement")
+    private val permissions = listOf("email", "public_profile", "pages_show_list", "ads_management", "business_management", "instagram_basic",  "instagram_manage_comments", "instagram_manage_insights", "pages_read_engagement", "read_insights")
 
 
     override fun onCreateView(
@@ -71,7 +71,7 @@ class LoginFragment : Fragment() {
         accessTokenTracker?.stopTracking()
     }
 
-    fun checkLoginStatus() {
+    private fun checkLoginStatus() {
         accessToken = AccessToken.getCurrentAccessToken()
         mainViewModel.setAccessToken(accessToken?.token)
         Log.d("LoginFragment", "Access Token ViewModel: ${mainViewModel.accessToken.value}")
