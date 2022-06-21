@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.alexp.insightspro.BuildConfig
 import com.alexp.insightspro.MainViewModel
 import com.alexp.insightspro.adapter.PostAdapter
 import com.alexp.insightspro.databinding.FragmentPostsBinding
