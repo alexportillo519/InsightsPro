@@ -14,7 +14,7 @@ To make sure that you are able to use the app, you will need to follow these ste
 
     1. Make sure your Instagram account is either a business or creator account.
 
-If you don't know what account type your Instagram is you can check by following these steps. 
+If you don't know what account type your Instagram is, you can check by following these steps. 
 
 Go to your Instagram app -> Hamburger Menu -> Settings -> Account -> Switch Account Type
 
