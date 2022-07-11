@@ -13,15 +13,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:cardCornerRadius="8dp"
-        app:cardBackgroundColor="#F8F8F8"
-        app:cardElevation="2dp"
+        app:cardCornerRadius="@dimen/eight_dp"
+        app:cardBackgroundColor="@color/grey_and_white"
+        app:cardElevation="@dimen/two_dp"
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="12dp">
+            android:layout_margin="@dimen/twelve_dp">
 
             <TextView
                 android:id="@+id/comment_username_TV"
@@ -39,8 +39,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="@dimen/eight_dp"
+                android:layout_marginEnd="@dimen/standard_margin"
                 android:textColor="@color/text_color_green"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/comment_username_TV"

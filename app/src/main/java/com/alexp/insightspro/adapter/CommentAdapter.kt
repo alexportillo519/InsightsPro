@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.alexp.insightspro.databinding.CommentBinding
 import com.alexp.insightspro.models.Comment
+import com.alexp.insightspro.utils.DateUtil
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -35,18 +36,11 @@ class CommentAdapter(
         private val binding: CommentBinding,
         private val onItemClicked: (comment: Comment) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
-        @SuppressLint("SimpleDateFormat")
         fun onBind(comment: Comment) {
             binding.apply {
                 commentTextTV.text = comment.text
 
-                val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-                sdf.timeZone = TimeZone.getTimeZone("GMT")
-                val time = sdf.parse(comment.timePosted!!)?.time
-                val now = System.currentTimeMillis()
-                val timeAgo = DateUtils.getRelativeTimeSpanString(time!!, now, DateUtils.MINUTE_IN_MILLIS).toString()
-
-                commentTimePostedTV.text = timeAgo
+                commentTimePostedTV.text = DateUtil().formatTime(comment.timePosted)
                 commentUsernameTV.text = comment.userWhoCommented
                 commentLayout.setOnClickListener {
                     onItemClicked(comment)

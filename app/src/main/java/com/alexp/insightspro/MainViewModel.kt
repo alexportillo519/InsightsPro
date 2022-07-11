@@ -1,6 +1,11 @@
 package com.alexp.insightspro
 
 
+import android.content.Context
+import android.content.res.Resources
+import android.util.Log
+import androidx.core.content.edit
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.alexp.insightspro.models.Comment
@@ -8,8 +13,14 @@ import com.alexp.insightspro.models.Post
 
 class MainViewModel : ViewModel() {
 
-    var listOfComments = MutableLiveData<MutableList<Comment>>()
-    var listOfFlaggedComments = MutableLiveData<MutableList<Comment>>()
+    private val _listOfComments = MutableLiveData<List<Comment>>()
+    val listOfComments: LiveData<List<Comment>> = _listOfComments
+
+    private val _listOfFlaggedComments = MutableLiveData<List<Comment>>()
+    val listOfFlaggedComments: LiveData<List<Comment>> = _listOfFlaggedComments
+
+    private val _listOfPosts = MutableLiveData<List<Post?>>()
+    val listOfPosts: LiveData<List<Post?>> = _listOfPosts
 
     var isFirstTimeLoggedIn: Boolean = true
 
@@ -17,45 +28,24 @@ class MainViewModel : ViewModel() {
 
     var commentClicked = MutableLiveData<Comment>()
 
-    private var tempListOfComments = mutableListOf<Comment>()
-
-    var listOfPosts = MutableLiveData<MutableList<Post?>>()
-
     private var tempListOfPosts = mutableListOf<Post?>()
 
-    fun setComments(comments: List<Comment>) {
-        tempListOfComments.clear()
-        tempListOfComments.addAll(comments)
-        listOfComments.value = tempListOfComments
+    private val listOfFlaggedWords = listOf("wtf","fuck","arse","crap","arsehole","ass","asshole","bitch","bullshit","shit","tits","bastard","cock","dick","prick","pussy","twat","motherfucker","slut","piss")
 
-        // add more offensive words
-        val keywords = arrayOf("wtf")
+    fun setComments(comments: List<Comment>) {
+
+        _listOfComments.value = comments.toMutableList()
+
         val flaggedComments = mutableListOf<Comment>()
         comments.forEach { comment ->
-            keywords.filter {
-                if(comment.text?.contains(it, true) == true) {
-                    flaggedComments.add(comment)
-                } else {
-                    false
-                }
-            }
+            filterComments(comment, flaggedComments)
         }
-        comments.forEach { comment ->
-            comment.replies?.forEach { reply ->
-                keywords.filter {
-                    if(reply.text?.contains(it, true) == true) {
-                        if (!flaggedComments.contains(comment)) {
-                            flaggedComments.add(comment)
-                        }
-                        true
-                    } else {
-                        false
-                    }
-                }
-            }
-        }
-        listOfFlaggedComments.value = flaggedComments
 
+        comments.forEach { comment ->
+            filterReplies(comment, flaggedComments)
+        }
+
+        _listOfFlaggedComments.value = flaggedComments
     }
 
     fun setCommentClicked(comment: Comment) {
@@ -69,6 +59,32 @@ class MainViewModel : ViewModel() {
     fun setPosts(posts: List<Post?>) {
         tempListOfPosts.clear()
         tempListOfPosts.addAll(posts)
-        listOfPosts.value = tempListOfPosts
+        _listOfPosts.value = tempListOfPosts
     }
+
+    private fun filterComments(comment: Comment, flaggedComments: MutableList<Comment>) {
+        listOfFlaggedWords.filter {
+            if(comment.text?.contains(it, true) == true) {
+                flaggedComments.add(comment)
+            } else {
+                false
+            }
+        }
+    }
+
+    private fun filterReplies(comment: Comment, flaggedComments: MutableList<Comment>) {
+        comment.replies?.forEach { reply ->
+            listOfFlaggedWords.filter {
+                if(reply.text?.contains(it, true) == true) {
+                    if (!flaggedComments.contains(comment)) {
+                        flaggedComments.add(comment)
+                    }
+                    true
+                } else {
+                    false
+                }
+            }
+        }
+    }
+
 }

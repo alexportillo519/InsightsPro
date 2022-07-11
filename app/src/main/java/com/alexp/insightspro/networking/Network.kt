@@ -21,8 +21,6 @@ object Network {
     private var listOfPostData = mutableListOf<Post>()
     private var accountInsights: AccountInsights? = null
     private var wasCommentDeleted: Boolean? = null
-    private var wasReplyPosted: Boolean? = null
-
     private val logger = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
     private val client = OkHttpClient.Builder().addInterceptor(logger)
     private val instagramGraphsAPI: InstagramGraphsAPI
@@ -38,42 +36,28 @@ object Network {
     fun getInstagramAccountId(accessToken: String?, onSuccess: (String?) -> Unit) {
         if(instagramId != null) {
             onSuccess(instagramId)
+            return
         }
         instagramGraphsAPI.getInstagramAccountId(accessToken).enqueue(InstagramIdCallback(onSuccess))
     }
 
     fun getCommentDetails(accessToken: String?, onSuccess: (List<Comment>) -> Unit) {
-        if (listOfComments.isNotEmpty()) {
-            onSuccess(listOfComments.toList())
-        }
         instagramGraphsAPI.getCommentDetails(instagramId, accessToken).enqueue(CommentsCallback(onSuccess))
     }
 
     fun getProfilePicture(id: String?, accessToken: String?, onSuccess: (AccountData?) -> Unit) {
-        if(accountData != null) {
-            onSuccess(accountData)
-        }
         instagramGraphsAPI.getProfilePictureAndUsername(id, accessToken).enqueue(ProfilePictureCallback(onSuccess))
     }
 
     fun getReplies(replyId: String?, accessToken: String?, onSuccess: (List<Reply?>) -> Unit) {
-        if (listOfReplies.isNotEmpty()) {
-            onSuccess(listOfReplies)
-        }
         instagramGraphsAPI.getReplies(replyId, accessToken).enqueue(ReplyCallback(onSuccess))
     }
 
     fun getAccountInsights(accountId: String?, accessToken: String?, onSuccess: (AccountInsights?) -> Unit) {
-        if(accountInsights != null) {
-            onSuccess(accountInsights)
-        }
         instagramGraphsAPI.getProfileInsights(accountId, accessToken).enqueue(AccountInsightsCallback(onSuccess))
     }
 
     fun getPostData(accountId: String?, accessToken: String?, onSuccess: (List<Post?>) -> Unit) {
-        if (listOfPostData.isNotEmpty()) {
-            onSuccess(listOfPostData)
-        }
         instagramGraphsAPI.getPostData(accountId, accessToken).enqueue(PostDataCallback(onSuccess))
     }
 
@@ -82,9 +66,6 @@ object Network {
     }
 
     fun postReply(id: String?, accessToken: String?, message: String?, onSuccess: (Boolean?) -> Unit) {
-        if (wasReplyPosted != null) {
-            onSuccess(wasReplyPosted)
-        }
         instagramGraphsAPI.postReply(id, message, accessToken).enqueue(PostReplyCallback(onSuccess))
     }
 

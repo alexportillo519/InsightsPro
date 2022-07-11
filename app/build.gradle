@@ -19,6 +19,7 @@ android {
         versionName "1.0"
         resValue("string", "FACEBOOK_APP_ID", localProperties['facebookAppId'])
         resValue("string", "FACEBOOK_CLIENT_TOKEN", localProperties['facebookClientToken'])
+        resValue("string", "FACEBOOK_BASE_URL", localProperties['facebookBaseUrl'])
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

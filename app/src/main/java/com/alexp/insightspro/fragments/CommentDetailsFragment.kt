@@ -3,8 +3,6 @@ package com.alexp.insightspro.fragments
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.InputType
-import android.text.format.DateUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,10 +19,9 @@ import com.alexp.insightspro.adapter.ReplyAdapter
 import com.alexp.insightspro.databinding.FragmentCommentDetailsBinding
 import com.alexp.insightspro.models.Reply
 import com.alexp.insightspro.networking.Network
+import com.alexp.insightspro.utils.DateUtil
 import com.facebook.AccessToken
 import com.facebook.FacebookSdk
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 class CommentDetailsFragment : Fragment() {
@@ -55,7 +52,7 @@ class CommentDetailsFragment : Fragment() {
             binding.commentUsernameTV.text = comment.userWhoCommented
             binding.commentTextTV.text = comment.text
             binding.commentLikesTV.text = getString(R.string.like_count, comment.likeCount)
-            binding.commentTimePostedTV.text = formatTimePosted(comment.timePosted)
+            binding.commentTimePostedTV.text = DateUtil().formatTime(comment.timePosted)
             replyAdapter.submitList(comment.replies ?: emptyList())
             binding.repliesRecyclerView.adapter = replyAdapter
             binding.repliesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -68,20 +65,11 @@ class CommentDetailsFragment : Fragment() {
         }
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private fun formatTimePosted(timeFromJson: String?): String {
-        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-        sdf.timeZone = TimeZone.getTimeZone("GMT")
-        val time = sdf.parse(timeFromJson)?.time
-        val now = System.currentTimeMillis()
-        return DateUtils.getRelativeTimeSpanString(time!!, now, DateUtils.MINUTE_IN_MILLIS).toString()
-    }
-
     private fun setUpAlertDialog(commentId: String?) {
         AlertDialog.Builder(requireContext())
-            .setTitle("Delete Comment?")
-            .setMessage("Are you sure you want to delete this comment?")
-            .setPositiveButton("Yes") { _, _ ->
+            .setTitle(R.string.delete_comment)
+            .setMessage(R.string.you_sure_you_want_to_delete_comment)
+            .setPositiveButton(R.string.yes) { _, _ ->
                 binding.circularProgressBar.visibility = View.VISIBLE
                 mainViewModel.setAccessToken(accessToken?.token)
                 mainViewModel.accessToken.observe(viewLifecycleOwner) { accessToken ->
@@ -96,7 +84,7 @@ class CommentDetailsFragment : Fragment() {
                     }
                 }
             }
-            .setNegativeButton("No") { _, _ -> }
+            .setNegativeButton(R.string.no) { _, _ -> }
             .create().show()
     }
 
@@ -104,7 +92,7 @@ class CommentDetailsFragment : Fragment() {
     private fun setUpReplyAlertDialog(commentId: String?) {
 
         val input = EditText(requireContext())
-        input.hint = "Enter Reply"
+        input.hint = getString(R.string.enter_reply)
         input.inputType = InputType.TYPE_CLASS_TEXT
         input.setSingleLine()
         val container = FrameLayout(requireContext())
@@ -116,9 +104,9 @@ class CommentDetailsFragment : Fragment() {
 
 
         AlertDialog.Builder(requireContext())
-            .setTitle("Reply")
+            .setTitle(R.string.reply)
             .setView(container)
-            .setPositiveButton("Post") { _, _ ->
+            .setPositiveButton(R.string.post) { _, _ ->
                 binding.circularProgressBar.visibility = View.VISIBLE
                 val inputText = input.text.toString()
                 Network.postReply(commentId, accessToken?.token, inputText){ replyWasPosted ->
@@ -126,13 +114,12 @@ class CommentDetailsFragment : Fragment() {
                         Network.getReplies(commentId, accessToken?.token) { replies ->
                             binding.circularProgressBar.visibility = View.INVISIBLE
                             replyAdapter.submitList(replies)
-                            binding.repliesRecyclerView.adapter?.notifyDataSetChanged()
                         }
                     }
                 }
 
             }
-            .setNegativeButton("Cancel") { dialog, _ ->
+            .setNegativeButton(R.string.cancel) { dialog, _ ->
                 dialog.cancel()
             }
             .create().show()
@@ -141,9 +128,9 @@ class CommentDetailsFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     private fun deleteReply(reply: Reply) {
         AlertDialog.Builder(requireContext())
-            .setTitle("Delete Reply?")
-            .setMessage("Are you sure you want to delete this reply?")
-            .setPositiveButton("Yes") { _, _ ->
+            .setTitle(R.string.delete_reply)
+            .setMessage(R.string.you_sure_you_want_to_delete_reply)
+            .setPositiveButton(R.string.yes) { _, _ ->
                 binding.circularProgressBar.visibility = View.VISIBLE
                 mainViewModel.setAccessToken(accessToken?.token)
                 mainViewModel.accessToken.observe(viewLifecycleOwner) { accessToken ->
@@ -158,7 +145,7 @@ class CommentDetailsFragment : Fragment() {
                     }
                 }
             }
-            .setNegativeButton("No") { _, _ -> }
+            .setNegativeButton(R.string.no) { _, _ -> }
             .create().show()
     }
 }

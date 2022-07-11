@@ -12,19 +12,19 @@
         android:id="@+id/comment_cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/standard_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:cardCornerRadius="8dp"
-        app:cardBackgroundColor="#F8F8F8"
-        app:cardElevation="10dp"
+        app:cardCornerRadius="@dimen/eight_dp"
+        app:cardBackgroundColor="@color/grey_and_white"
+        app:cardElevation="@dimen/ten_dp"
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="12dp">
+            android:layout_margin="@dimen/twelve_dp">
 
             <TextView
                 android:id="@+id/comment_username_TV"
@@ -44,7 +44,7 @@
                 android:textSize="20sp"
                 android:textColor="@color/text_color_green"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="@dimen/ten_dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/comment_username_TV"
                 app:layout_constraintEnd_toStartOf="@id/delete_iv"
@@ -54,7 +54,7 @@
                 android:id="@+id/comment_time_posted_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="@dimen/standard_text_size"
                 android:textColor="@color/text_color_green"
                 android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -65,8 +65,8 @@
                 android:id="@+id/comment_likes_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:textSize="16sp"
+                android:layout_marginStart="@dimen/twelve_dp"
+                android:textSize="@dimen/standard_text_size"
                 android:textColor="@color/text_color_green"
                 app:layout_constraintStart_toEndOf="@+id/comment_time_posted_TV"
                 app:layout_constraintTop_toTopOf="@+id/comment_time_posted_TV"
@@ -76,8 +76,8 @@
                 android:id="@+id/comment_reply_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:textSize="16sp"
+                android:layout_marginStart="@dimen/twelve_dp"
+                android:textSize="@dimen/standard_text_size"
                 android:textColor="@color/text_color_green"
                 android:text="@string/reply"
                 android:textStyle="bold"
@@ -104,7 +104,7 @@
         android:id="@+id/replies_recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="@dimen/one_hundred_dp"
         android:layout_marginBottom="?android:attr/actionBarSize"
         app:layout_constraintTop_toBottomOf="@+id/comment_cardView"
         app:layout_constraintStart_toStartOf="parent"
@@ -125,7 +125,7 @@
         app:cpb_progressbar_color="@color/text_color_green"
         app:cpb_background_progressbar_width="5dp"
         app:cpb_progress_direction="to_right"
-        app:cpb_progressbar_width="10dp"
+        app:cpb_progressbar_width="@dimen/ten_dp"
         android:visibility="invisible"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

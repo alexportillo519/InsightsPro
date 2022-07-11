@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="dialog_margin">20dp</dimen>
+    <dimen name="eight_dp">8dp</dimen>
+    <dimen name="twelve_dp">12dp</dimen>
+    <dimen name="standard_margin">16dp</dimen>
+    <dimen name="two_dp">2dp</dimen>
+    <dimen name="twenty_dp">20dp</dimen>
+    <dimen name="forty_dp">40dp</dimen>
+    <dimen name="ten_dp">10dp</dimen>
+    <dimen name="one_hundred_dp">100dp</dimen>
+    <dimen name="standard_text_size">16sp</dimen>
 </resources>

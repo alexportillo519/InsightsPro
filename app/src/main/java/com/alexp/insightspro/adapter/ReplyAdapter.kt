@@ -16,6 +16,7 @@ import com.alexp.insightspro.R
 import com.alexp.insightspro.databinding.RepliesBinding
 import com.alexp.insightspro.models.Reply
 import com.alexp.insightspro.networking.Network
+import com.alexp.insightspro.utils.DateUtil
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -40,18 +41,11 @@ class ReplyAdapter(
         private val onReplyClicked: (reply: Reply) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        @SuppressLint("SimpleDateFormat")
         fun onBind(reply: Reply) {
             binding.apply {
                 replyUsernameTV.text = reply.userWhoCommented
                 replyTextTV.text = reply.text
-
-                val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-                sdf.timeZone = TimeZone.getTimeZone("GMT")
-                val time = sdf.parse(reply.timePosted!!)?.time
-                val now = System.currentTimeMillis()
-                val timeAgo = DateUtils.getRelativeTimeSpanString(time!!, now, DateUtils.MINUTE_IN_MILLIS).toString()
-                replyTimePostedTV.text = timeAgo
+                replyTimePostedTV.text = DateUtil().formatTime(reply.timePosted)
                 replyLikesTV.text = reply.likeCount.toString() + " likes"
 
                 deleteIv.setOnClickListener {

@@ -19,7 +19,7 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginTop="60dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="@dimen/twelve_dp"
         android:scaleType="centerCrop"
         app:civ_border_color="@color/white"
         app:civ_border_width="3dp"
@@ -32,7 +32,7 @@
         android:id="@+id/username_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/standard_margin"
         android:layout_marginBottom="30dp"
         android:textColor="@color/white"
         android:textSize="26sp"
@@ -60,7 +60,7 @@
         android:layout_width="148dp"
         android:layout_height="102dp"
         android:backgroundTint="@color/white"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="@dimen/twenty_dp"
         android:layout_marginTop="50dp"
         app:layout_constraintBottom_toTopOf="@+id/flags_cardView"
         app:layout_constraintEnd_toStartOf="@+id/posts_cardView"
@@ -70,10 +70,10 @@
 
         <ImageView
             android:id="@+id/comment_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/forty_dp"
+            android:layout_height="@dimen/forty_dp"
             android:layout_gravity="center|top"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/twenty_dp"
             android:src="@drawable/comment_icon"
             android:contentDescription="@string/comment_icon" />
 
@@ -82,10 +82,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/standard_margin"
             android:text="@string/comments"
             android:textColor="@color/dark_green"
-            android:textSize="16sp"
+            android:textSize="@dimen/standard_text_size"
             android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>
@@ -95,7 +95,7 @@
         android:layout_width="148dp"
         android:layout_height="102dp"
         android:backgroundTint="@color/white"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="@dimen/twenty_dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/comment_cardView"
@@ -103,10 +103,10 @@
 
         <ImageView
             android:id="@+id/posts_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/forty_dp"
+            android:layout_height="@dimen/forty_dp"
             android:layout_gravity="center|top"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/twenty_dp"
             android:src="@drawable/posts_icon"
             android:contentDescription="@string/post_icon" />
 
@@ -115,10 +115,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/standard_margin"
             android:text="@string/posts"
             android:textColor="@color/dark_green"
-            android:textSize="16sp"
+            android:textSize="@dimen/standard_text_size"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 
@@ -127,7 +127,7 @@
         android:layout_width="148dp"
         android:layout_height="102dp"
         android:backgroundTint="@color/white"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="@dimen/twenty_dp"
         app:layout_constraintBottom_toTopOf="@+id/logout_cardView"
         app:layout_constraintEnd_toStartOf="@+id/my_profile_cardView"
         app:layout_constraintHorizontal_bias="0.5"
@@ -136,10 +136,10 @@
 
         <ImageView
             android:id="@+id/flags_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/forty_dp"
+            android:layout_height="@dimen/forty_dp"
             android:layout_gravity="center|top"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/twenty_dp"
             android:src="@drawable/flag_icon"
             android:contentDescription="@string/flags_icon" />
 
@@ -148,10 +148,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/twenty_dp"
             android:text="@string/flags"
             android:textColor="@color/dark_green"
-            android:textSize="16sp"
+            android:textSize="@dimen/standard_text_size"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 
@@ -161,7 +161,7 @@
         android:layout_height="102dp"
         android:layout_marginTop="5dp"
         android:backgroundTint="@color/white"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="@dimen/twenty_dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/flags_cardView"
@@ -169,10 +169,10 @@
 
         <ImageView
             android:id="@+id/my_profile_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/forty_dp"
+            android:layout_height="@dimen/forty_dp"
             android:layout_gravity="center|top"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/twenty_dp"
             android:src="@drawable/user_icon"
             android:contentDescription="@string/my_profile_icon"/>
 
@@ -181,10 +181,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/standard_margin"
             android:text="@string/my_profile"
             android:textColor="@color/dark_green"
-            android:textSize="16sp"
+            android:textSize="@dimen/standard_text_size"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 
@@ -193,7 +193,7 @@
         android:layout_width="148dp"
         android:layout_height="102dp"
         android:backgroundTint="@color/white"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="@dimen/twenty_dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -203,10 +203,10 @@
 
         <ImageView
             android:id="@+id/logout_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/forty_dp"
+            android:layout_height="@dimen/forty_dp"
             android:layout_gravity="center|top"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/twenty_dp"
             android:src="@drawable/log_out_icon"
             android:contentDescription="@string/logout_icon"/>
 
@@ -215,10 +215,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/standard_margin"
             android:text="@string/logout"
             android:textColor="@color/dark_green"
-            android:textSize="16sp"
+            android:textSize="@dimen/standard_text_size"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 

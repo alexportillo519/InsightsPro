@@ -10,10 +10,10 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_pic_IV"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="@dimen/one_hundred_dp"
+        android:layout_height="@dimen/one_hundred_dp"
+        android:layout_marginStart="@dimen/twenty_dp"
+        android:layout_marginTop="@dimen/forty_dp"
         android:scaleType="centerCrop"
         android:src="@drawable/user_icon"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="@dimen/standard_text_size"
         app:layout_constraintBottom_toBottomOf="@id/profile_pic_IV"
         app:layout_constraintEnd_toEndOf="@id/posts_TV"
         app:layout_constraintStart_toStartOf="@+id/posts_TV"
@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="@dimen/standard_text_size"
         app:layout_constraintBottom_toBottomOf="@id/profile_pic_IV"
         app:layout_constraintEnd_toEndOf="@id/follower_TV"
         app:layout_constraintStart_toStartOf="@+id/follower_TV"
@@ -84,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="@dimen/standard_text_size"
         app:layout_constraintBottom_toBottomOf="@id/profile_pic_IV"
         app:layout_constraintEnd_toEndOf="@id/following_TV"
         app:layout_constraintStart_toStartOf="@+id/following_TV"
@@ -96,9 +96,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/standard_margin"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="@dimen/standard_text_size"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile_pic_IV"
@@ -119,8 +119,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/profile_visits_cardview"
         android:layout_width="160dp"
-        android:layout_height="100dp"
-        app:cardCornerRadius="20dp"
+        android:layout_height="@dimen/one_hundred_dp"
+        app:cardCornerRadius="@dimen/twenty_dp"
         android:layout_marginTop="30dp"
         app:layout_constraintBottom_toTopOf="@+id/phone_call_cardview"
         app:layout_constraintEnd_toStartOf="@+id/post_views_cardview"
@@ -133,11 +133,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/ten_dp"
             android:text="@string/profile_visits_ntoday"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="@dimen/standard_text_size"
             android:textStyle="bold" />
 
         <TextView
@@ -145,7 +145,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/ten_dp"
             android:text="@string/_0"
             android:textColor="@color/black"
             android:textSize="24sp" />
@@ -154,8 +154,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/post_views_cardview"
         android:layout_width="160dp"
-        android:layout_height="100dp"
-        app:cardCornerRadius="20dp"
+        android:layout_height="@dimen/one_hundred_dp"
+        app:cardCornerRadius="@dimen/twenty_dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/profile_visits_cardview"
@@ -166,11 +166,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/ten_dp"
             android:text="@string/post_views_ntoday"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="@dimen/standard_text_size"
             android:textStyle="bold" />
 
         <TextView
@@ -178,7 +178,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/ten_dp"
             android:text="@string/_0"
             android:textColor="@color/black"
             android:textSize="24sp" />
@@ -187,8 +187,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/phone_call_cardview"
         android:layout_width="160dp"
-        android:layout_height="100dp"
-        app:cardCornerRadius="20dp"
+        android:layout_height="@dimen/one_hundred_dp"
+        app:cardCornerRadius="@dimen/twenty_dp"
         app:layout_constraintBottom_toTopOf="@+id/email_clicks_cardview"
         app:layout_constraintEnd_toStartOf="@+id/website_cardview"
         app:layout_constraintHorizontal_bias="0.5"
@@ -200,11 +200,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/ten_dp"
             android:text="@string/number_of_phone_nnumber_clicks"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="@dimen/standard_text_size"
             android:textStyle="bold" />
 
         <TextView
@@ -212,7 +212,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/ten_dp"
             android:text="@string/_0"
             android:textColor="@color/black"
             android:textSize="24sp" />
@@ -221,8 +221,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/email_clicks_cardview"
         android:layout_width="160dp"
-        android:layout_height="100dp"
-        app:cardCornerRadius="20dp"
+        android:layout_height="@dimen/one_hundred_dp"
+        app:cardCornerRadius="@dimen/twenty_dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -235,11 +235,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/ten_dp"
             android:text="@string/number_of_email_nlink_clicks"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="@dimen/standard_text_size"
             android:textStyle="bold" />
 
         <TextView
@@ -247,7 +247,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/ten_dp"
             android:text="@string/_0"
             android:textColor="@color/black"
             android:textSize="24sp" />
@@ -256,8 +256,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/website_cardview"
         android:layout_width="160dp"
-        android:layout_height="100dp"
-        app:cardCornerRadius="20dp"
+        android:layout_height="@dimen/one_hundred_dp"
+        app:cardCornerRadius="@dimen/twenty_dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/phone_call_cardview"
@@ -268,11 +268,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/ten_dp"
             android:text="@string/number_of_website_nlink_clicks"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="@dimen/standard_text_size"
             android:textStyle="bold" />
 
         <TextView
@@ -280,7 +280,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/ten_dp"
             android:text="@string/_0"
             android:textColor="@color/black"
             android:textSize="24sp" />

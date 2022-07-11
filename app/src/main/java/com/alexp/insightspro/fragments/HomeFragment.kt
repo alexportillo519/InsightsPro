@@ -46,14 +46,14 @@ class HomeFragment : Fragment() {
 
         binding.logoutCardView.setOnClickListener {
             AlertDialog.Builder(requireContext())
-                .setTitle("Log Out?")
-                .setMessage("Are you sure you want to log out?")
-                .setPositiveButton("Yes") { _, _ ->
+                .setTitle(R.string.log_out)
+                .setMessage(R.string.are_you_sure_you_want_to_log_out)
+                .setPositiveButton(R.string.yes) { _, _ ->
                     AccessToken.setCurrentAccessToken(null)
                     LoginManager.getInstance().logOut()
                     findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
                 }
-                .setNegativeButton("No") { _, _ -> }
+                .setNegativeButton(R.string.no) { _, _ -> }
                 .create().show()
         }
 
@@ -76,23 +76,19 @@ class HomeFragment : Fragment() {
 
                 if (id == null) {
                     AlertDialog.Builder(requireContext())
-                        .setTitle("Connect Your Instagram Account")
-                        .setMessage("Make sure your instagram is either a business or a creator account. Then create a Facebook Page and connect that to your Instagram Account.")
-                        .setPositiveButton("Steps") { dialog, _ ->
+                        .setTitle(R.string.connect_your_instagram_account)
+                        .setMessage(R.string.make_sure_account_is)
+                        .setPositiveButton(R.string.steps) { dialog, _ ->
                             dialog.cancel()
                             AlertDialog.Builder(requireContext())
-                                .setTitle("Connect Your Instagram Account")
-                                .setMessage("Step 1: Create a Facebook Page\n" +
-                                        "Sign in to Facebook -> Home -> Pages -> Create New Page\n" +
-                                        "Step 2: Connect your Facebook Page to your Instagram\n" +
-                                        "Go to your Facebook Page you just created -> Settings -> Instagram -> Connect Account\n" +
-                                        "You should be set!")
-                                .setPositiveButton("OK") { dialog2, _ ->
+                                .setTitle(R.string.connect_your_instagram_account)
+                                .setMessage(R.string.steps_on_how_to_set_up)
+                                .setPositiveButton(R.string.ok) { dialog2, _ ->
                                     dialog2.cancel()
                                 }
                                 .create().show()
                         }
-                        .setNegativeButton("Cancel") { dialog, _ ->
+                        .setNegativeButton(R.string.cancel) { dialog, _ ->
                             dialog.cancel()
                         }
                         .create().show()

@@ -33,5 +33,21 @@
     <string name="comment_icon">Comment Icon</string>
     <string name="trash_icon">Trash Icon</string>
     <string name="_0">0</string>
-
+    <string name="post">Post</string>
+    <string name="cancel">Cancel</string>
+    <string name="enter_reply">Enter Reply</string>
+    <string name="delete_reply">Delete Reply?</string>
+    <string name="delete_comment">Delete Comment?</string>
+    <string name="you_sure_you_want_to_delete_comment">Are you sure you want to delete this comment?</string>
+    <string name="you_sure_you_want_to_delete_reply">Are you sure you want to delete this reply?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="log_out">Log Out?</string>
+    <string name="are_you_sure_you_want_to_log_out">Are you sure you want to log out?</string>
+    <string name="connect_your_instagram_account">Connect Your Instagram Account</string>
+    <string name="make_sure_account_is">Make sure your instagram is either a business or a creator account. Then create a Facebook Page and connect that to your Instagram Account.</string>
+    <string name="steps">Steps</string>
+    <string name="steps_on_how_to_set_up">Step 1: Create a Facebook Page\nSign in to Facebook -> Home -> Pages -> Create New Page\nStep 2: Connect your Facebook Page to your Instagram\nGo to your Facebook Page you just created -> Settings -> Instagram -> Connect Account\nYou should be set!</string>
+    <string name="ok">OK</string>
+    <string name="flagged_words">fuck,arse,crap,arsehole,ass,asshole,bitch,bullshit,shit,tits,bastard,cock,dick,prick,pussy,twat,motherfucker,slut,piss</string>
 </resources>
