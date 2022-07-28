@@ -8,6 +8,7 @@
     app:cardElevation="5dp"
     app:guidelineUseRtl="false"
     android:id="@+id/postCardView"
+    app:cardBackgroundColor="@color/grey_and_white"
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
