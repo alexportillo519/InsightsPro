@@ -36,5 +36,6 @@ data class PostInfo(
     @Json(name = "caption")val caption: String,
     @Json(name = "comments_count")val commentsCount: Int,
     @Json(name = "like_count")val likeCount: Int,
-    @Json(name = "id") val postId: String
+    @Json(name = "id") val postId: String,
+    @Json(name = "media_type") val mediaType: String
 )

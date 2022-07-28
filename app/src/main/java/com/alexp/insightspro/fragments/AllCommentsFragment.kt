@@ -29,6 +29,7 @@ class AllCommentsFragment : Fragment() {
     ): View {
         binding = FragmentAllCommentsBinding.inflate(layoutInflater, container, false)
         FacebookSdk.fullyInitialize()
+        binding.circularProgressBar.visibility = View.VISIBLE
 
         binding.commentRecyclerView.apply {
             adapter = commentAdapter
@@ -56,6 +57,7 @@ class AllCommentsFragment : Fragment() {
 
         mainViewModel.listOfComments.observe(viewLifecycleOwner) {
             commentAdapter.submitList(it)
+            binding.circularProgressBar.visibility = View.INVISIBLE
             binding.commentRecyclerView.adapter = commentAdapter
         }
     }

@@ -31,6 +31,10 @@ class HomeFragment : Fragment() {
         FacebookSdk.fullyInitialize()
         mainViewModel.setAccessToken(accessToken?.token)
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        if (activity != null) {
+            Glide.with(this).load(mainViewModel.profilePicture).into(binding.profilePicIV)
+        }
+        binding.usernameTv.text = mainViewModel.userName
 
         setOnClickListeners()
 
@@ -74,6 +78,12 @@ class HomeFragment : Fragment() {
         mainViewModel.accessToken.observe(viewLifecycleOwner) { token ->
             Network.getInstagramAccountId(token ?: "") { id ->
 
+                Network.getProfilePicture(id,token ?:"") { accountData ->
+                    Glide.with(this).load(accountData?.profilePic).into(binding.profilePicIV)
+                    binding.usernameTv.text = accountData?.username
+                    mainViewModel.setProfilePictureAndUsername(accountData?.profilePic, accountData?.username)
+                }
+
                 if (id == null) {
                     AlertDialog.Builder(requireContext())
                         .setTitle(R.string.connect_your_instagram_account)
@@ -92,11 +102,6 @@ class HomeFragment : Fragment() {
                             dialog.cancel()
                         }
                         .create().show()
-                }
-
-                Network.getProfilePicture(id,token ?:"") { accountData ->
-                    Glide.with(this).load(accountData?.profilePic).into(binding.profilePicIV)
-                    binding.usernameTv.text = accountData?.username
                 }
 
             }

@@ -5,5 +5,6 @@ data class Post(
     val caption: String?,
     val commentCount: Int?,
     val likeCount: Int?,
-    val postId: String?
+    val postId: String?,
+    val mediaType: String?
 )

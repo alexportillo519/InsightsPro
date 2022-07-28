@@ -58,7 +58,11 @@
         android:id="@+id/postsFragment"
         android:name="com.alexp.insightspro.fragments.PostsFragment"
         android:label="My Posts"
-        tools:layout="@layout/fragment_posts" />
+        tools:layout="@layout/fragment_posts" >
+        <action
+            android:id="@+id/action_postsFragment_to_postDetailsFragment"
+            app:destination="@id/postDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/flaggedCommentsFragment"
         android:name="com.alexp.insightspro.fragments.FlaggedCommentsFragment"
@@ -68,4 +72,9 @@
             android:id="@+id/action_flaggedCommentsFragment_to_commentDetailsFragment"
             app:destination="@id/commentDetailsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/postDetailsFragment"
+        android:name="com.alexp.insightspro.fragments.PostDetailsFragment"
+        android:label="Post Details"
+        tools:layout="@layout/fragment_post_details" />
 </navigation>

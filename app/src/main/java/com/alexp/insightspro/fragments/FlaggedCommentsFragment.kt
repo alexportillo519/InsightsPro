@@ -28,6 +28,7 @@ class FlaggedCommentsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFlaggedCommentsBinding.inflate(inflater, container, false)
+        binding.circularProgressBar.visibility = View.VISIBLE
 
         binding.flaggedCommentRV.apply {
             adapter = commentAdapter
@@ -53,8 +54,13 @@ class FlaggedCommentsFragment : Fragment() {
         }
 
         mainViewModel.listOfFlaggedComments.observe(viewLifecycleOwner) { comments ->
-            commentAdapter.submitList(comments)
-            binding.flaggedCommentRV.adapter = commentAdapter
+            if (comments.isEmpty()) {
+                binding.noCommentTV.visibility = View.VISIBLE
+            } else {
+                commentAdapter.submitList(comments)
+                binding.flaggedCommentRV.adapter = commentAdapter
+            }
+            binding.circularProgressBar.visibility = View.INVISIBLE
         }
     }
 

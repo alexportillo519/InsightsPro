@@ -11,6 +11,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.*
 
 object Network {
 
@@ -19,6 +20,7 @@ object Network {
     private var listOfReplies = mutableListOf<Reply>()
     private var accountData: AccountData? = null
     private var listOfPostData = mutableListOf<Post>()
+    private var listOfCarouselImages = mutableListOf<String?>()
     private var accountInsights: AccountInsights? = null
     private var wasCommentDeleted: Boolean? = null
     private val logger = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
@@ -41,7 +43,7 @@ object Network {
         instagramGraphsAPI.getInstagramAccountId(accessToken).enqueue(InstagramIdCallback(onSuccess))
     }
 
-    fun getCommentDetails(accessToken: String?, onSuccess: (List<Comment>) -> Unit) {
+    fun getCommentDetails(accessToken: String?, onSuccess: (List<Comment>?) -> Unit) {
         instagramGraphsAPI.getCommentDetails(instagramId, accessToken).enqueue(CommentsCallback(onSuccess))
     }
 
@@ -61,6 +63,10 @@ object Network {
         instagramGraphsAPI.getPostData(accountId, accessToken).enqueue(PostDataCallback(onSuccess))
     }
 
+    fun getCarouselData(postId: String?, accessToken: String?, onSuccess: (List<String?>) -> Unit) {
+        instagramGraphsAPI.getCarouselImages(postId, accessToken).enqueue(CarouselDataCallback(onSuccess))
+    }
+
     fun deleteComment(id: String?, accessToken: String?, onSuccess: (Boolean?) -> Unit) {
         instagramGraphsAPI.deleteComment(id, accessToken).enqueue(DeleteCallback(onSuccess))
     }
@@ -76,6 +82,23 @@ object Network {
         }
 
         override fun onFailure(call: Call<PostData>, t: Throwable) {
+            Log.v("Networking", "Error! $t")
+        }
+
+    }
+
+    private class CarouselDataCallback(private val onSuccess: (List<String?>) -> Unit) : Callback<CarouselPostData> {
+        override fun onResponse(
+            call: Call<CarouselPostData>,
+            response: Response<CarouselPostData>
+        ) {
+            response.body()?.carouselData?.forEach {
+                listOfCarouselImages.add(it.carouselImageUrl)
+            }
+            onSuccess(listOfCarouselImages)
+        }
+
+        override fun onFailure(call: Call<CarouselPostData>, t: Throwable) {
             Log.v("Networking", "Error! $t")
         }
 
@@ -99,9 +122,9 @@ object Network {
 
     }
 
-    private class CommentsCallback(private val onSuccess: (List<Comment>) -> Unit) : Callback<CommentsDetails> {
+    private class CommentsCallback(private val onSuccess: (List<Comment>?) -> Unit) : Callback<CommentsDetails> {
         override fun onResponse(call: Call<CommentsDetails>, response: Response<CommentsDetails>) {
-            listOfComments = response.body()?.toDetails()!!
+            listOfComments = response.body()?.toDetails() ?: emptyList<Comment>().toMutableList()
             onSuccess(listOfComments.toList())
         }
 
@@ -181,6 +204,9 @@ object Network {
     private class ReplyCallback(private val onSuccess: (List<Reply?>) -> Unit) : Callback<GetReplies> {
         override fun onResponse(call: Call<GetReplies>, response: Response<GetReplies>) {
             listOfReplies = response.body()?.replies?.listOfReplies?.toReplies()?.toMutableList() ?: emptyList<Reply>().toMutableList()
+            if (listOfReplies.isNotEmpty()) {
+                listOfReplies.reverse()
+            }
             onSuccess(listOfReplies)
         }
 
@@ -233,7 +259,8 @@ object Network {
                 postInfo.caption,
                 postInfo.commentsCount,
                 postInfo.likeCount,
-                postInfo.postId
+                postInfo.postId,
+                postInfo.mediaType
             )
             )
         }

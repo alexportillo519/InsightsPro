@@ -22,6 +22,7 @@ import com.alexp.insightspro.networking.Network
 import com.alexp.insightspro.utils.DateUtil
 import com.facebook.AccessToken
 import com.facebook.FacebookSdk
+import java.util.*
 
 
 class CommentDetailsFragment : Fragment() {
@@ -53,6 +54,9 @@ class CommentDetailsFragment : Fragment() {
             binding.commentTextTV.text = comment.text
             binding.commentLikesTV.text = getString(R.string.like_count, comment.likeCount)
             binding.commentTimePostedTV.text = DateUtil().formatTime(comment.timePosted)
+            if (comment.replies?.isNotEmpty() == true) {
+                Collections.reverse(comment.replies)
+            }
             replyAdapter.submitList(comment.replies ?: emptyList())
             binding.repliesRecyclerView.adapter = replyAdapter
             binding.repliesRecyclerView.layoutManager = LinearLayoutManager(requireContext())

@@ -33,11 +33,17 @@ interface InstagramGraphsAPI {
         @Query("access_token") accessToken: String?
     ): Call<InsightsData>
 
-    @GET("{id}?fields=media{media_url,caption,comments_count,like_count}")
+    @GET("{id}?fields=media{media_url,caption,comments_count,like_count,media_type}")
     fun getPostData(
         @Path("id")accountId: String?,
         @Query("access_token") accessToken: String?
     ) : Call<PostData>
+
+    @GET("{id}/children?fields=media_url")
+    fun getCarouselImages(
+        @Path("id") postId: String?,
+        @Query("access_token") accessToken: String?
+    ): Call<CarouselPostData>
 
     @DELETE("{id}")
     fun deleteComment(

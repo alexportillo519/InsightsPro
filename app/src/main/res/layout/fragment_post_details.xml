@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.PostDetailsFragment"
+    android:paddingTop="100dp"
+    android:paddingBottom="50dp"
+    android:background="@drawable/green_and_black_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/carouselConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
+                android:id="@+id/carouselRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/carouselLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/carouselRecyclerView">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="12dp"
+                    android:src="@drawable/heart_icon" />
+
+                <TextView
+                    android:id="@+id/carouselLikeCountTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    tools:text="200"
+                    android:textColor="@color/black"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"/>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="12dp"
+                    android:src="@drawable/comment_icon_black"/>
+
+                <TextView
+                    android:id="@+id/carouselCommentCountTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    tools:text="20"
+                    android:textColor="@color/black"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/carouselCaptionTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="12dp"
+                app:layout_constraintTop_toBottomOf="@id/carouselLinearLayout"
+                android:background="@drawable/rounded_corner_caption"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/videoConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <VideoView
+                android:id="@+id/postVideoView"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/videoLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/postVideoView">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="12dp"
+                    android:src="@drawable/heart_icon" />
+
+                <TextView
+                    android:id="@+id/videoLikeCountTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    tools:text="200"
+                    android:textColor="@color/black"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"/>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="12dp"
+                    android:src="@drawable/comment_icon_black"/>
+
+                <TextView
+                    android:id="@+id/videoCommentCountTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    tools:text="20"
+                    android:textColor="@color/black"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/videoCaption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="12dp"
+                app:layout_constraintTop_toBottomOf="@id/videoLinearLayout"
+                android:background="@drawable/rounded_corner_caption"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/imageConstraintLayout"
+            android:layout_width="match_parent"
+            android:visibility="invisible"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/postImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintDimensionRatio="H, 1:1"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/imageLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/postImageView">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="12dp"
+                    android:src="@drawable/heart_icon" />
+
+                <TextView
+                    android:id="@+id/imageLikeCountTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    tools:text="200"
+                    android:textColor="@color/black"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"/>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="12dp"
+                    android:src="@drawable/comment_icon_black"/>
+
+                <TextView
+                    android:id="@+id/imageCommentCountTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    tools:text="20"
+                    android:textColor="@color/black"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/imageCaptionTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="12dp"
+                app:layout_constraintTop_toBottomOf="@id/imageLinearLayout"
+                android:background="@drawable/rounded_corner_caption"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/circularProgressBar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cpb_indeterminate_mode="true"
+            app:cpb_background_progressbar_color="@color/white"
+            app:cpb_progressbar_color="@color/text_color_green"
+            app:cpb_background_progressbar_width="5dp"
+            app:cpb_progress_direction="to_right"
+            app:cpb_progressbar_width="@dimen/ten_dp"
+            android:visibility="invisible"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

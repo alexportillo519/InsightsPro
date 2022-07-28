@@ -33,7 +33,9 @@ class MyProfileFragment : Fragment() {
             Network.getInstagramAccountId(token ?: "") { id ->
 
                 Network.getProfilePicture(id,token ?:"") { accountData ->
-                    Glide.with(this).load(accountData?.profilePic).into(binding.profilePicIV)
+                    if (activity != null) {
+                        Glide.with(this).load(accountData?.profilePic).into(binding.profilePicIV)
+                    }
                     binding.amountOfPostsTV.text = accountData?.numOfPosts.toString()
                     binding.amountOfFollowersTV.text = accountData?.followerCount.toString()
                     binding.amountOfFollowingTV.text = accountData?.followingCount.toString()

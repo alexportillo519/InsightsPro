@@ -13,6 +13,7 @@ import com.alexp.insightspro.MainViewModel
 import com.alexp.insightspro.R
 import com.alexp.insightspro.databinding.FragmentLoginBinding
 import com.alexp.insightspro.networking.Network
+import com.bumptech.glide.Glide
 import com.facebook.*
 import com.facebook.appevents.AppEventsLogger
 import com.facebook.login.LoginResult
@@ -52,7 +53,6 @@ class LoginFragment : Fragment() {
                 override fun onSuccess(result: LoginResult) {
                     accessToken = AccessToken.getCurrentAccessToken()
                     mainViewModel.setAccessToken(accessToken?.token)
-                    Log.d("LoginFragment", "Access Token: $accessToken")
                     changeFragment()
                 }
             })
@@ -74,10 +74,14 @@ class LoginFragment : Fragment() {
     private fun checkLoginStatus() {
         accessToken = AccessToken.getCurrentAccessToken()
         mainViewModel.setAccessToken(accessToken?.token)
-        Log.d("LoginFragment", "Access Token ViewModel: ${mainViewModel.accessToken.value}")
         val isLoggedIn = accessToken != null && !accessToken!!.isExpired
         if (isLoggedIn && mainViewModel.isFirstTimeLoggedIn) {
             mainViewModel.isFirstTimeLoggedIn = false
+            Network.getInstagramAccountId(accessToken?.token) { accountId ->
+                Network.getProfilePicture(accountId, accessToken?.token) {
+                    mainViewModel.setProfilePictureAndUsername(it?.profilePic, it?.username)
+                }
+            }
             changeFragment()
         }
         binding?.loginButton?.setPermissions(permissions)

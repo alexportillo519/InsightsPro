@@ -28,20 +28,25 @@ class MainViewModel : ViewModel() {
 
     var commentClicked = MutableLiveData<Comment>()
 
+    var postClicked = MutableLiveData<Post>()
+
+    var profilePicture: String = ""
+    var userName: String = ""
+
     private var tempListOfPosts = mutableListOf<Post?>()
 
-    private val listOfFlaggedWords = listOf("wtf","fuck","arse","crap","arsehole","ass","asshole","bitch","bullshit","shit","tits","bastard","cock","dick","prick","pussy","twat","motherfucker","slut","piss")
+    private val listOfFlaggedWords = listOf("wtf ","fuck ","arse ","crap ","arsehole ","ass ","asshole ","bitch ","bullshit ","shit ","tits ","bastard ","cock ","dick ","prick ","pussy ","twat ","motherfucker ","slut ","piss ")
 
-    fun setComments(comments: List<Comment>) {
+    fun setComments(comments: List<Comment>?) {
 
-        _listOfComments.value = comments.toMutableList()
+        _listOfComments.value = comments?.toMutableList()
 
         val flaggedComments = mutableListOf<Comment>()
-        comments.forEach { comment ->
+        comments?.forEach { comment ->
             filterComments(comment, flaggedComments)
         }
 
-        comments.forEach { comment ->
+        comments?.forEach { comment ->
             filterReplies(comment, flaggedComments)
         }
 
@@ -52,6 +57,10 @@ class MainViewModel : ViewModel() {
         commentClicked.value = comment
     }
 
+    fun setPostClicked(post: Post) {
+        postClicked.value = post
+    }
+
     fun setAccessToken(token: String?) {
         accessToken.value = token
     }
@@ -60,6 +69,11 @@ class MainViewModel : ViewModel() {
         tempListOfPosts.clear()
         tempListOfPosts.addAll(posts)
         _listOfPosts.value = tempListOfPosts
+    }
+
+    fun setProfilePictureAndUsername(pictureUrl: String?, username: String?) {
+        profilePicture = pictureUrl ?: ""
+        userName = username ?: ""
     }
 
     private fun filterComments(comment: Comment, flaggedComments: MutableList<Comment>) {

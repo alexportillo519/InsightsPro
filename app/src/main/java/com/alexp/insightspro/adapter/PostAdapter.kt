@@ -10,7 +10,9 @@ import com.alexp.insightspro.models.Comment
 import com.alexp.insightspro.models.Post
 import com.bumptech.glide.Glide
 
-class PostAdapter() : ListAdapter<Post, PostAdapter.ItemViewHolder>(diff) {
+class PostAdapter(
+    private val onPostClicked: (post: Post) -> Unit
+) : ListAdapter<Post, PostAdapter.ItemViewHolder>(diff) {
 
     companion object {
         val diff = object : DiffUtil.ItemCallback<Post>() {
@@ -26,7 +28,8 @@ class PostAdapter() : ListAdapter<Post, PostAdapter.ItemViewHolder>(diff) {
     }
 
     class ItemViewHolder(
-        private val binding: PostBinding
+        private val binding: PostBinding,
+        private val onPostClicked: (post: Post) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(post: Post) {
@@ -35,6 +38,10 @@ class PostAdapter() : ListAdapter<Post, PostAdapter.ItemViewHolder>(diff) {
                 postCaption.text = post.caption
                 likeCountTV.text = post.likeCount.toString()
                 commentCountTV.text = post.commentCount.toString()
+
+                postCardView.setOnClickListener {
+                    onPostClicked(post)
+                }
             }
         }
 
@@ -43,7 +50,7 @@ class PostAdapter() : ListAdapter<Post, PostAdapter.ItemViewHolder>(diff) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = PostBinding.inflate(inflater, parent, false)
-        return ItemViewHolder(binding)
+        return ItemViewHolder(binding, onPostClicked)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {

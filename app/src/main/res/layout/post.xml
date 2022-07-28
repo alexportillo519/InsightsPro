@@ -7,11 +7,12 @@
     app:cardCornerRadius="10dp"
     app:cardElevation="5dp"
     app:guidelineUseRtl="false"
+    android:id="@+id/postCardView"
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/post_image"
@@ -30,6 +31,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:layout_marginBottom="30dp"
+            android:textColor="@color/black"
             tools:text="Bio"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,6 +59,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/standard_text_size"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_marginBottom="@dimen/eight_dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +90,8 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/standard_text_size"
             android:textStyle="bold"
-            android:layout_marginBottom="@dimen/eight_dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

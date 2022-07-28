@@ -2,8 +2,6 @@
     <string name="app_name">InsightsPro</string>
 
     <string name="like_count">%1$d likes</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="reply">Reply</string>
     <string name="delete_icon">Delete icon</string>
     <string name="leaf_background_image">Leaf background image</string>
@@ -50,4 +48,5 @@
     <string name="steps_on_how_to_set_up">Step 1: Create a Facebook Page\nSign in to Facebook -> Home -> Pages -> Create New Page\nStep 2: Connect your Facebook Page to your Instagram\nGo to your Facebook Page you just created -> Settings -> Instagram -> Connect Account\nYou should be set!</string>
     <string name="ok">OK</string>
     <string name="flagged_words">fuck,arse,crap,arsehole,ass,asshole,bitch,bullshit,shit,tits,bastard,cock,dick,prick,pussy,twat,motherfucker,slut,piss</string>
+    <string name="you_have_no_flagged_comments">You have no flagged comments.</string>
 </resources>

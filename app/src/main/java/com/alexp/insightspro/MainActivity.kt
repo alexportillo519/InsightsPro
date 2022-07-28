@@ -18,7 +18,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.alexp.insightspro.databinding.ActivityMainBinding
-
+import com.alexp.insightspro.networking.Network
+import com.facebook.AccessToken
+import com.facebook.FacebookSdk
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,7 +30,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         val appBarConfiguration = AppBarConfiguration.Builder(R.id.loginFragment, R.id.homeFragment).build()
         setupActionBarWithNavController(navHostFragment.navController, appBarConfiguration)
